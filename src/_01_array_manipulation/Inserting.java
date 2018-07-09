@@ -1,7 +1,30 @@
 package _01_array_manipulation;
 
-
-
 public class Inserting {
-	
+	public static int[] insertAt(int[] arr, int place, int num) {
+		int[] arr2 = new int[arr.length + 1];
+		/*for (int i = 0; i < arr2.length - 1; i++) {
+			arr2[i] = arr[i];
+		}
+		for (int i = arr2.length - 2; i >= place; i--) {
+			arr2[i + 1] = arr2[i];
+		}
+		arr2[place] = num;
+		System.out.println(num);
+		return arr2;*/
+		
+		for (int i = 0; i < place; i++) {
+			arr2[i] = arr[i];
+		}
+		arr2[place] = num;
+		for (int i = place; i < arr2.length - 1; i++) {
+			arr2[i + 1] = arr[i];
+		}
+		int counter = 0;
+		for (int i : arr2) {
+			System.out.println(counter +" "+i);
+			counter++;
+		}
+		return arr2;
+	}
 }

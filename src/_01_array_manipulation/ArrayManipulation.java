@@ -53,7 +53,7 @@ public class ArrayManipulation {
 	public void testInsertIntoRandomArray() {
 		int[] testArray = new int[100];
 		for (int i = 0; i < 100; ++ i) {
-			testArray[i] = rng.nextInt();
+			testArray[i] = rng.nextInt(100);
 		}
 		int[] inputArrayCopy = Arrays.copyOf(testArray, 100);
 		
