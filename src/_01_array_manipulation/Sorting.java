@@ -12,4 +12,8 @@ public class Sorting {
 			}
 		}
 	}
+	
+	public static void sort(long[] arr) {
+		
+	}
 }
