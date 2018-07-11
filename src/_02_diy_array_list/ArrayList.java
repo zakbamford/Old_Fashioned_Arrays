@@ -17,8 +17,7 @@ public class ArrayList<E> implements List<E> {
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return size;
 	}
 
 	@Override
@@ -29,7 +28,10 @@ public class ArrayList<E> implements List<E> {
 
 	@Override
 	public boolean contains(Object o) {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < size; i++) {
+			if (elements[i].equals(o))
+				return true;
+		}
 		return false;
 	}
 
@@ -53,9 +55,20 @@ public class ArrayList<E> implements List<E> {
 
 	@Override
 	public boolean add(Object e) {
+		if (size == elements.length - 1) {
+			expand();
+		}
 		elements[size] = e;
 		size++;
 		return true;
+	}
+
+	public void expand() {
+		Object[] temp = new Object[size + 5];
+		for (int i = 0; i < elements.length; i++) {
+			temp[i] = elements[i];
+		}
+		elements = temp;
 	}
 
 	@Override
@@ -149,15 +162,18 @@ public class ArrayList<E> implements List<E> {
 	@Override
 	public E remove(int index) {
 		E temp = (E) elements[index];
-		for (int i = elements.length - 1; i >= index; i--) {
-			elements[i + 1] = elements[i];
+		for (int i = index; i < size - 1; i++) {
+			elements[i] = elements[i + 1];
 		}
+		elements[size] = null;
+		size--;
 		return temp;
 	}
-	
+
 	public void addAt(int index, E element) {
-		for (int i = elements.length - 1; i >= index; i--)
+		for (int i = elements.length - 2; i >= index; i--)
 			elements[i + 1] = elements[i];
 		elements[index] = element;
+		size++;
 	}
 }
